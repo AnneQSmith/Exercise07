@@ -5,9 +5,6 @@
 #Restaurant Name:Rating
 # out the ratings in alphabetical order by restaurant
 
-
-
-#TODOs:
 #Open the file
 
 scores = open('scores.txt')
@@ -25,6 +22,7 @@ for line in scores:
     line_tokens = line.split(':')
 
 #create dictionary entry for each restaurant, assign a rating value
+# not guarding against bad lines at all here
 
     rest_dict[line_tokens[0]]= int(line_tokens[1])
  
@@ -33,4 +31,7 @@ for line in scores:
 #print sorted_keylist
 
 for restaurant in sorted_keylist:
-    print"%s gets %d stars!" % (restaurant, rest_dict[restaurant])
+    if rest_dict[restaurant] == 1:
+        print"%s gets only %d star -- blech!" % (restaurant, rest_dict[restaurant])
+    else:
+        print"%s gets %d stars" % (restaurant, rest_dict[restaurant])
